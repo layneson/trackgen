@@ -27,47 +27,78 @@
             margin-top: 5px;
             padding-top: 5px;
         }
+
+        .textbox-wrapper {
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        .checkbox-wrapper {
+            margin-left: 5%;
+
+            text-align: left;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
     <div id="container">
         <canvas id="display" width="500" height="500"></canvas>
-        <table>
+        <table width="500">
             <tr>
                 <td><label>Seed:</label></td>
-                <td><input type="text" id="i_seed"></td>
+                <td><div class="textbox-wrapper"><input type="text" id="i_seed"></div></td>
                 <td><button id="b_random_seed">Randomize</button></td>
             </tr>
 
             <tr>
                 <td><label>Points:</label></td>
-                <td><input type="range" id="i_num_points" min="0" max="30" step="1"></td>
+                <td><div class="textbox-wrapper"><input type="range" id="i_num_points" min="0" max="30" step="1"></div></td>
                 <td><label id="id_num_points"></label></td>
             </tr>
 
             <tr>
                 <td><label>Starting Radius Fraction:</label></td>
-                <td><input type="range" id="i_radius" min="0" max="0.5" step="0.01"></td>
+                <td><div class="textbox-wrapper"><input type="range" id="i_radius" min="0" max="0.5" step="0.01"></div></td>
                 <td><label id="id_radius"></label></td>
             </tr>
 
             <tr>
                 <td><label>Max Radius Jitter Fraction:</label></td>
-                <td><input type="range" id="i_radius_jitter" min="0" max="1" step="0.01"></td>
+                <td><div class="textbox-wrapper"><input type="range" id="i_radius_jitter" min="0" max="1" step="0.01"></div></td>
                 <td><label id="id_radius_jitter"></label></td>
             </tr>
 
             <tr>
                 <td><label>Max Angle Jitter Fraction:</label></td>
-                <td><input type="range" id="i_theta_jitter" min="0" max="0.25" step="0.001"></td>
+                <td><div class="textbox-wrapper"><input type="range" id="i_theta_jitter" min="0" max="0.25" step="0.001"></div></td>
                 <td><label id="id_theta_jitter"></label></td>
             </tr>
 
             <tr>
                 <td><label>Spline Point Density (per pixel):</label></td>
-                <td><input type="range" id="i_spline_point_density" min="0" max="1" step="0.01"></td>
+                <td><div class="textbox-wrapper"><input type="range" id="i_spline_point_density" min="0" max="1" step="0.01"></div></td>
                 <td><label id="id_spline_point_density"></label></td>
+            </tr>
+
+            <tr>
+                <td><label>Show Control Points:</label></td>
+                <td><div class="checkbox-wrapper"><input type="checkbox" id="i_show_control_points"></div></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td colspan="3" class="separator"><hr></td>
             </tr>
         </table>
 
