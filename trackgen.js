@@ -7,6 +7,12 @@ const POINT_SIZE = 6;
 const HALF_POINT_SIZE = POINT_SIZE / 2;
 
 // Definitions for track generation settings.
+//     num_points: The number of points to generate for the initial track.
+//     radius: The starting radius to use, as a fraction of the SIZE.
+//     radius_jitter: The maximum magnitude by which track points are jittered, as a fraction of radius.
+//     theta_jitter: The maximum angle by which track points are jittered, as a fraction of PI.
+//     spline_point_density: Number of spline points to calculate per pixel.
+//     seed: RNG seed for the track.
 const TRACK_SETTINGS = {
     num_points: 10,
     radius: 0.333,
@@ -44,11 +50,6 @@ function point_on_curve(p0x, p0y, p1x, p1y, p2x, p2y, p3x, p3y, t) {
 }
 
 // Generates and draws a track.
-//     num_points: The number of points to generate for the initial track.
-//     radius: The starting radius to use, as a fraction of the SIZE.
-//     radius_jitter: The maximum magnitude by which track points are jittered, as a fraction of radius.
-//     theta_jitter: The maximum angle by which track points are jittered, as a fraction of PI.
-//     spline_point_density: Number of spline points to calculate per pixel.
 function draw_track(settings) {
     // Initialize the RNG.
     const rand = new Math.seedrandom(settings.seed);
