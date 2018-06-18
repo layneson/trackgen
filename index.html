@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <!-- from https://github.com/davidbau/seedrandom -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.3/seedrandom.min.js"></script>
+
+    <style>
+        td:nth-child(1) {
+            text-align: right;
+        }
+
+        td:nth-child(2) {
+            text-align: center;
+        }
+
+        #container {
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #reset-container {           
+            border-top-style: solid;
+            border-top-width: 1px;
+            border-top-color: black;
+
+            margin-top: 5px;
+            padding-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <canvas id="display" width="500" height="500"></canvas>
+        <table>
+            <tr>
+                <td><label>Seed:</label></td>
+                <td><input type="text" id="i_seed"></td>
+                <td><button id="b_random_seed">Randomize</button></td>
+            </tr>
+
+            <tr>
+                <td><label>Points:</label></td>
+                <td><input type="range" id="i_num_points" min="0" max="30" step="1"></td>
+                <td><label id="id_num_points"></label></td>
+            </tr>
+
+            <tr>
+                <td><label>Starting Radius Fraction:</label></td>
+                <td><input type="range" id="i_radius" min="0" max="0.5" step="0.01"></td>
+                <td><label id="id_radius"></label></td>
+            </tr>
+
+            <tr>
+                <td><label>Max Radius Jitter Fraction:</label></td>
+                <td><input type="range" id="i_radius_jitter" min="0" max="1" step="0.01"></td>
+                <td><label id="id_radius_jitter"></label></td>
+            </tr>
+
+            <tr>
+                <td><label>Max Angle Jitter Fraction:</label></td>
+                <td><input type="range" id="i_theta_jitter" min="0" max="0.25" step="0.001"></td>
+                <td><label id="id_theta_jitter"></label></td>
+            </tr>
+
+            <tr>
+                <td><label>Spline Point Density (per pixel):</label></td>
+                <td><input type="range" id="i_spline_point_density" min="0" max="1" step="0.01"></td>
+                <td><label id="id_spline_point_density"></label></td>
+            </tr>
+        </table>
+
+        <div id="reset-container">
+            <button id="b_reset">Reset to Defaults</button>
+        </div>
+    </div>
+
+    <script src="trackgen.js"></script>
+</body>
+
+</html>
