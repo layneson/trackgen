@@ -13,13 +13,15 @@ const HALF_POINT_SIZE = POINT_SIZE / 2;
 //     theta_jitter: The maximum angle by which track points are jittered, as a fraction of PI.
 //     spline_point_density: Number of spline points to calculate per pixel.
 //     seed: RNG seed for the track.
+//     show_control_points: If true, displays the control points as red boxes.
 const TRACK_SETTINGS = {
     num_points: 10,
     radius: 0.333,
     radius_jitter: 0.3,
     theta_jitter: 1 / 20,
     spline_point_density: 1,
-    seed: 12345
+    seed: 12345,
+    show_control_points: true
 };
 
 let canvas = document.getElementById("display");
@@ -99,9 +101,11 @@ function draw_track(settings) {
     }
 
     // Draw control points.
-    for (let point of points) {
-        ctx.fillStyle = "red";
-        ctx.fillRect(point.x - HALF_POINT_SIZE, point.y - HALF_POINT_SIZE, POINT_SIZE, POINT_SIZE);
+    if (settings.show_control_points) {
+        for (let point of points) {
+            ctx.fillStyle = "red";
+            ctx.fillRect(point.x - HALF_POINT_SIZE, point.y - HALF_POINT_SIZE, POINT_SIZE, POINT_SIZE);
+        }
     }
 }
 
@@ -132,6 +136,14 @@ function bind_textbox(box, setting_name) {
     });
 }
 
+function bind_checkbox(box, setting_name) {
+    box.checked = current_track_settings[setting_name];
+    box.addEventListener("input", () => {
+        current_track_settings[setting_name] = box.checked;
+        update_track();
+    });
+}
+
 // Bind UI.
 let i_seed = document.getElementById("i_seed");
 bind_textbox(i_seed, "seed");
@@ -155,6 +167,9 @@ bind_slider_display(i_theta_jitter, id_theta_jitter, "theta_jitter");
 let i_spline_point_density = document.getElementById("i_spline_point_density");
 let id_spline_point_density = document.getElementById("id_spline_point_density");
 bind_slider_display(i_spline_point_density, id_spline_point_density, "spline_point_density");
+
+let i_show_control_points = document.getElementById("i_show_control_points");
+bind_checkbox(i_show_control_points, "show_control_points");
 
 // Bind button listeners.
 let b_random_seed = document.getElementById("b_random_seed");
